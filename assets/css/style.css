@@ -1,0 +1,257 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 200;
+  margin: 0;
+ }
+
+h2 {
+  font-size: 32px;
+  color: #444;
+}
+
+.align_items {
+  align-items: center;
+}
+
+.form {
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 2px 2px #bbb;
+  font-size: inherit;
+  height: 32px;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+.form:focus {
+  box-shadow: inset 0 0 2px 2px #98c4f2;
+  outline: none;
+}
+
+.button {
+  background: linear-gradient(#ddd, #ccc);
+  border: none;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  padding: 8px 10px;
+  text-decoration: none;
+  transition: 0.3s;
+  vertical-align: middle;
+}
+
+.button:focus, .button:hover {
+  background: linear-gradient(#ccc, #bbb);
+  transition: 0.3s;
+}
+
+.main_btn {
+  background: linear-gradient(#9bba98, #8baa88);
+  border: 3px solid #8baa88;
+  color: #333;
+  font-weight: bold;
+  padding: 16px 32px;
+  margin: 0;
+}
+
+.main_btn:focus, .main_btn:hover {
+  background: linear-gradient(#7b9a78, #6b8a68);
+  border-color: #6b8a68;
+  transition: 0.3s;
+}
+
+.link {
+  color: #5884f2;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #1844d2;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: white;
+  color: #444;
+  height: 64px;
+  margin: 0;
+  padding-left: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  background-image: url('../images/logo_small.png');
+  height: 54px;
+  width: 210px;
+}
+
+#login_form {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#login_form label {
+  margin-right: 10px;
+}
+
+#login_form input {
+  margin-right: 10px;
+}
+
+#login_form .button {
+  margin-right: 10px;
+}
+
+#main_container {
+  background: linear-gradient(#cbeac8, #abcaa8);
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0px 5px 5px;
+  min-height: calc(100% + 64px);
+  margin-bottom: -128px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#search_container {
+  padding-bottom: 13.71em;
+  padding-top: 11.57em;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#search_form {
+  width: 60%;
+}
+
+#search_input {
+  font-size: 20px;
+  height: 48px;
+  width: 100%;
+}
+
+.general_container {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px;
+  width: 60%;
+}
+
+#inner_container {
+  height: 60%;
+  margin-bottom: 128px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#inner_container label {
+  margin-bottom: 5px;
+}
+
+#inner_container input{
+  margin-bottom: 20px;
+}
+
+#form_container {
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#footer {
+  background: linear-gradient(90deg,rgba(107,138,104,0) 0,rgba(107,138,104,1) 50%,rgba(107,138,104,0) 100%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  height: 128px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer_logo {
+  background-image: url('../images/IC-Logo.png');
+  height: 105px;
+  width: 144px;
+}
+
+.autocomplete {
+  display: flex;
+  position: relative;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #ccc;
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #98c4f2 !important;
+}
+
+#classes {
+  margin-top: 1.66em;
+}
+
+.class_info {
+  background: linear-gradient(90deg,rgba(107,138,104,0) 0,rgba(107,138,104,1) 20%,rgba(107,138,104,1) 80%,rgba(107,138,104,0) 100%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  height: 60px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.class_info:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.class_info p {
+  padding-left: 10px;
+}
