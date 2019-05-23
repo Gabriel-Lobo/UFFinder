@@ -20,55 +20,51 @@ h2 {
   color: #444;
 }
 
-.align_items {
-  align-items: center;
-}
-
-.form {
+input[type='text'], input[type='email'], input[type='password'] {
   border: none;
   border-radius: 5px;
   box-shadow: inset 0 0 2px 2px #bbb;
-  font-size: inherit;
-  height: 32px;
+  height: 48px;
   padding: 0 10px;
   transition: 0.3s;
+  width: 100%;
 }
 
-.form:focus {
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus {
   box-shadow: inset 0 0 2px 2px #98c4f2;
   outline: none;
 }
 
-.button {
-  background: linear-gradient(#ddd, #ccc);
-  border: none;
-  border-radius: 5px;
-  color: black;
-  cursor: pointer;
-  padding: 8px 10px;
-  text-decoration: none;
-  transition: 0.3s;
-  vertical-align: middle;
+.main-form {
+  text-align: center;
+  width: inherit;
 }
 
-.button:focus, .button:hover {
-  background: linear-gradient(#ccc, #bbb);
-  transition: 0.3s;
-}
-
-.main_btn {
-  background: linear-gradient(#9bba98, #8baa88);
-  border: 3px solid #8baa88;
-  color: #333;
+.form-group label {
   font-weight: bold;
-  padding: 16px 32px;
-  margin: 0;
+  margin: .5rem 0;
 }
 
-.main_btn:focus, .main_btn:hover {
-  background: linear-gradient(#7b9a78, #6b8a68);
-  border-color: #6b8a68;
-  transition: 0.3s;
+.btn {
+  background: linear-gradient(#305177, #002147);
+  border: 3px solid #002147;
+  color: #eeeeee;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn:focus, .btn:hover {
+  background: linear-gradient(#507197, #305177);
+  border-color: #305177;
+  color: #eeeeee;
+}
+
+.btn-main {
+  padding: 16px 32px;
+}
+
+.search-button {
+  border-radius: 0 5px 5px 0;
 }
 
 .link {
@@ -84,15 +80,26 @@ h2 {
 }
 
 .navbar {
-  background-color: white;
-  color: #444;
-  height: 64px;
-  margin: 0;
-  padding-left: 15px;
+  height: 128px;
+  padding: 0 0 0 15px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    height: 64px;
+
+    justify-content: space-between;
+  }
+}
+
+.navbar div {
+  margin-right: 2px;
+}
+
+.navbar div a {
+  width: 8rem;
 }
 
 .logo {
@@ -101,91 +108,55 @@ h2 {
   width: 210px;
 }
 
-#login_form {
-  margin: 0;
+#main-container {
+  background-color: #e9ebee;
+  box-shadow: inset rgba(0, 0, 0, 0.3) 0px 5px 5px;
+  min-height: calc(100% - 64px);
+  padding: 1rem 0;
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-}
-
-#login_form label {
-  margin-right: 10px;
-}
-
-#login_form input {
-  margin-right: 10px;
-}
-
-#login_form .button {
-  margin-right: 10px;
-}
-
-#main_container {
-  background: linear-gradient(#cbeac8, #abcaa8);
-  box-shadow: inset rgba(0, 0, 0, 0.1) 0px 5px 5px;
-  min-height: calc(100% + 64px);
-  margin-bottom: -128px;
-
-  display: flex;
   justify-content: center;
 }
 
-#search_container {
-  padding-bottom: 13.71em;
-  padding-top: 11.57em;
-  width: 100%;
+.inner-container {
+  background-color: #ffffff;
+  border: 1px solid #d9dbde;
+  border-radius: 3px;
+  padding: 4rem 1rem;
+  position: relative;
+  width: 90%;
 
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center
 }
 
-#search_form {
-  width: 60%;
+@media screen and (min-width: 768px) {
+  .inner-container {
+    padding: 8rem 4rem;
+    width: 50%;
+  }
 }
 
-#search_input {
-  font-size: 20px;
-  height: 48px;
+#search-form {
   width: 100%;
 }
 
-.general_container {
+#search-input {
+  border-radius: 5px 0 0 5px;
+}
+
+.general-container {
   background-color: white;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px;
   width: 60%;
 }
 
-#inner_container {
-  height: 60%;
-  margin-bottom: 128px;
-
-  display: flex;
-  justify-content: center;
-}
-
-#inner_container label {
-  margin-bottom: 5px;
-}
-
-#inner_container input{
-  margin-bottom: 20px;
-}
-
-#form_container {
-  margin-top: 20px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 #footer {
-  background: linear-gradient(90deg,rgba(107,138,104,0) 0,rgba(107,138,104,1) 50%,rgba(107,138,104,0) 100%);
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
+  background-color: #002147;
   height: 128px;
 
   display: flex;
@@ -193,7 +164,7 @@ h2 {
   justify-content: center;
 }
 
-#footer_logo {
+#footer-logo {
   background-image: url('../images/IC-Logo.png');
   height: 105px;
   width: 144px;
@@ -237,7 +208,7 @@ h2 {
   margin-top: 1.66em;
 }
 
-.class_info {
+.class-info {
   background: linear-gradient(90deg,rgba(107,138,104,0) 0,rgba(107,138,104,1) 20%,rgba(107,138,104,1) 80%,rgba(107,138,104,0) 100%);
   background-size: 100% 1px;
   background-repeat: no-repeat;
@@ -247,11 +218,16 @@ h2 {
   transition: .3s;
 }
 
-.class_info:hover {
+.class-info:hover {
   background-color: #ccc;
   cursor: pointer;
 }
 
-.class_info p {
+.class-info p {
   padding-left: 10px;
+}
+
+.alert {
+  position: absolute;
+  top: 1rem;
 }
