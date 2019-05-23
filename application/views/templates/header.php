@@ -6,26 +6,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>UFFinder</title>
 	<meta charset='UTF-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel='stylesheet' type="text/css" href='<?php echo assets_url(); ?>css/style.css'>
 </head>
 <body>
 	<div class='navbar'>
-		<a class='logo' href='index.php'></a>
-		<form id='login_form' enctype='application/x-www-form-urlencoded' action='login.php' method='post'>
+		<a class='logo navbar-brand' href='index.php'></a>
+		<div>
 			<?php
-				if (!empty($_GET['logged']) && $_GET['logged'] == 'true') {
-					echo "<a class='link' href='profile.php'>" . $_GET['email'] . "</a>
-								<input class='button' type='submit' value='Sair' />
-								<input type='hidden' name='status' value='logout' />";
-				} else {		
-					echo "<label for='email'>Email:</label>
-								<input class='form' type='email' name='email' placeholder='email@id.uff.br' minlength='3' maxlength='150' required />
-								<label for='password'>Senha:</label>
-								<input class='form' type='password' name='password' minlength='3' maxlength='150' required />
-								<input class='button' type='submit' value='Entrar' />
-								<a class='button' href='signup.php'>Cadastrar</a>
-								<input type='hidden' name='status' value='login' />";
+				if (!$this->session->userdata('logged_in')) {
+			?>
+					<a class="btn button" href="<?=base_url().'login';?>">Entrar</a>
+					<a class="btn button" href="<?=base_url().'register';?>">Cadastre-se</a>
+			<?php
+				} else {
+			?>
+					<a class="btn button" href="<?=base_url().'login/logout';?>">Logout</a>
+			<?php
 				}
 			?>
-		</form>
+		</div>
 	</div>
