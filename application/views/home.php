@@ -4,12 +4,12 @@
 		<div class='autocomplete'>
 
 			<input id='search-input' type='text' name='search' minlength='3' maxlength='150'>
-			<input class='btn search-button' type='button' value='Pesquisar'>
+			<input class='btn btn-uffinder search-button' type='button' value='Pesquisar'>
 
 		</div>
 	</form>
 
 	<div id='classes' class='general-container'></div>
 
-	<a class='btn btn-main' href='classroom.php'>Cadastre uma Sala</a>
+	<a class='btn btn-uffinder btn-lg' href='classroom.php'>Cadastre uma Sala</a>
 </div>
