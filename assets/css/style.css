@@ -58,21 +58,18 @@ table {
   margin: .5rem 0;
 }
 
-.btn {
-  background: linear-gradient(#305177, #002147);
-  border: 3px solid #002147;
+.btn-uffinder {
+  background-color: #002147;
   color: #eeeeee;
-  font-size: 14px;
-  font-weight: bold;
 }
 
-.btn:focus, .btn:hover, .btn.active {
-  background: linear-gradient(#507197, #305177);
+.btn-uffinder:focus, .btn-uffinder:hover, .btn-uffinder.active {
+  background-color: #305177;
   border-color: #305177;
   color: #eeeeee;
 }
 
-.btn-main {
+.btn-lg {
   padding: 16px 32px;
 }
 
