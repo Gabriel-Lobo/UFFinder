@@ -4,7 +4,6 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Ações</th>
-                    <th scope="col">Nome</th>
                     <th scope="col">Email</th>
                     </tr>
             </thead>
@@ -22,7 +21,6 @@
                                 <button type="submit" class="btn btn-danger m-1"><i class="fas fa-trash-alt"></i></button>
                             <?php echo form_close();?>
                         </td>
-                        <td><?php echo $user['name']; ?></td>
                         <td><?php echo $user['email']; ?></td>
                     </tr>
                 <?php endforeach; ?>

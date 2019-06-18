@@ -47,12 +47,11 @@ class Users extends CI_Controller {
             $this->session->set_flashdata('errors', validation_errors());
             redirect(base_url().'users/new');
         } else {
-            $name = $this->input->post('name');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
 
             $data = [
-                'name' => $name, 'email' => $email, 'password' => $password
+                'email' => $email, 'password' => $password
             ];
 
             $insert_data = $this->user->set_user(0, $data);
@@ -105,11 +104,10 @@ class Users extends CI_Controller {
             redirect(base_url().'users/edit');
         } else {
             $id = $this->input->post('id');
-            $name = $this->input->post('name');
             $email = $this->input->post('email');
 
             $data = [
-                'name' => $name, 'email' => $email
+                'email' => $email
             ];
 
             $insert_data = $this->user->set_user($id, $data);

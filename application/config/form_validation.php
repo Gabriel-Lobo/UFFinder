@@ -4,11 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config = array(
     'create' => array(
         array(
-            'field' => 'name',
-            'label' => 'Name',
-            'rules' => 'required|min_length[3]|max_length[50]'
-        ),
-        array(
             'field' => 'email',
             'label' => 'Email',
             'rules' => 'required|valid_email|regex_match[/^.+?uff.br$/]|is_unique[users.email]|max_length[50]',

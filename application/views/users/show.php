@@ -1,6 +1,4 @@
 <div class="inner-container">
-    <p><?php echo $data->name; ?></p>
-
     <p><?php echo $data->email; ?></p>
 
     <div>
