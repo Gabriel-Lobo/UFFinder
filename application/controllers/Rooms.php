@@ -6,6 +6,7 @@ class Rooms extends CI_Controller {
         parent::__construct();
 
         $this->load->model('RoomsModel', 'room');
+        $this->load->model('DisciplinesModel', 'disciplines');
     }
 
     public function new() {
@@ -14,6 +15,7 @@ class Rooms extends CI_Controller {
         }
 
         $data['view'] = 'rooms/new';
+        $data['data'] = $this->disciplines->get_disciplines();
 
         $this->load->view('templates/header');
         $this->load->view('layout/main', $data);

@@ -12,8 +12,12 @@
     ?>
 
     <div class="form-group text-center">
-        <label for="email">Disciplina</label>
-        <input id="email" name="email" type="email" required>
+        <label for="discipline">Disciplina</label>
+        <select class="form-control" id="discipline" name="discipline" required>
+            <?php foreach ($data as $discipline): ?>
+                <option><?php echo $discipline['cod'].' - '.$discipline['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
     <div class="form-group text-center">
