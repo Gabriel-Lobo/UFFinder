@@ -17,18 +17,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php
 			if ($this->session->userdata('logged_in') && $this->session->userdata('is_admin')) {
 			?>
-				<a class="btn btn-uffinder" href="<?=base_url().'users';?>">Painel</a>
+				<a class="btn btn-uffinder" href="<?=base_url().'usuarios';?>">Painel</a>
 				<a class="btn btn-uffinder" href="<?=base_url().'login/logout';?>">Logout</a>
 			<?php
 			} elseif ($this->session->userdata('logged_in')) {
 			?>
-				<a class="btn btn-uffinder" href="<?=base_url().'users/show';?>">Meus Dados</a>
+				<a class="btn btn-uffinder" href="<?=base_url().'usuarios/show';?>">Meus Dados</a>
 				<a class="btn btn-uffinder" href="<?=base_url().'login/logout';?>">Logout</a>
 			<?php
 			} else {
 			?>
 				<a class="btn btn-uffinder" href="<?=base_url().'login';?>">Entrar</a>
-				<a class="btn btn-uffinder" href="<?=base_url().'users/new';?>">Cadastre-se</a>
+				<a class="btn btn-uffinder" href="<?=base_url().'usuarios/new';?>">Cadastre-se</a>
 			<?php
 			}
 			?>

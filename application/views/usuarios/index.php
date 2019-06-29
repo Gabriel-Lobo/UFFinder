@@ -8,20 +8,20 @@
                     </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $user): ?>
+                <?php foreach ($data as $usuario): ?>
                     <tr>
                         <td class='panel-actions'>
-                            <?php echo form_open('users/edit', 'class="d-table-cell"');?>
-                                <input id="id" name="id" type="hidden" value="<?php echo $user['id']; ?>" required>
+                            <?php echo form_open('usuarios/edit', 'class="d-table-cell"');?>
+                                <input id="id" name="id" type="hidden" value="<?php echo $usuario['id']; ?>" required>
                                 <button type="submit" class="btn btn-success m-1"><i class="fas fa-edit"></i></button>
                             <?php echo form_close();?>
 
-                            <?php echo form_open('users/destroy', 'class="d-table-cell"');?>
-                                <input id="id" name="id" type="hidden" value="<?php echo $user['id']; ?>" required>
+                            <?php echo form_open('usuarios/destroy', 'class="d-table-cell"');?>
+                                <input id="id" name="id" type="hidden" value="<?php echo $usuario['id']; ?>" required>
                                 <button type="submit" class="btn btn-danger m-1"><i class="fas fa-trash-alt"></i></button>
                             <?php echo form_close();?>
                         </td>
-                        <td><?php echo $user['email']; ?></td>
+                        <td><?php echo $usuario['email']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

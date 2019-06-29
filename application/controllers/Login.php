@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 
     public function login() {
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $password = $this->input->post('senha');
 
         $user = $this->login->verify_login($email, $password);
 
@@ -37,7 +37,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata($data);
             redirect(base_url());
         } else {
-            $this->session->set_flashdata('msg', 'Username / Password Invalid');
+            $this->session->set_flashdata('msg', 'Email ou Senha invalidos.');
             redirect(base_url().'login');
         }
     }

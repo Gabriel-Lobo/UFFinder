@@ -1,19 +1,19 @@
 <?php
 
-class Users extends CI_Controller {
+class Usuarios extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
 
-        $this->load->model('UsersModel', 'user');
+        $this->load->model('UsuariosModel', 'usuarios');
     }
 
     public function index() {
         if (!$this->session->userdata('is_admin')) {
             redirect(base_url());
         }
-        $config['base_url'] = site_url('user/index');
-        $config['total_rows'] = $this->user->count_users();
+        $config['base_url'] = site_url('usuarios/index');
+        $config['total_rows'] = $this->usuarios->count_usuarios();
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -21,9 +21,9 @@ class Users extends CI_Controller {
 
         $params['limit'] = 10;
         $params['offset'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['data'] = $this->user->get_users($params);
+        $data['data'] = $this->usuarios->get_usuarios($params);
 
-        $data['view'] = 'users/index';
+        $data['view'] = 'usuarios/index';
 
         $this->load->view('templates/header');
         $this->load->view('layout/main', $data);
@@ -35,7 +35,7 @@ class Users extends CI_Controller {
             redirect(base_url());
         }
 
-        $data['view'] = 'users/new';
+        $data['view'] = 'usuarios/new';
 
         $this->load->view('templates/header');
         $this->load->view('layout/main', $data);
@@ -45,19 +45,19 @@ class Users extends CI_Controller {
     public function create() {
         if ($this->form_validation->run('create') == FALSE) {
             $this->session->set_flashdata('errors', validation_errors());
-            redirect(base_url().'users/new');
+            redirect(base_url().'usuarios/new');
         } else {
             $email = $this->input->post('email');
-            $password = $this->input->post('password');
+            $password = $this->input->post('senha');
 
             $data = [
-                'email' => $email, 'password' => $password
+                'email' => $email, 'senha' => $password
             ];
 
-            $insert_data = $this->user->set_user(0, $data);
+            $insert_data = $this->usuarios->set_usuario(0, $data);
 
             if ($insert_data) {
-                $this->session->set_flashdata('msg', 'Successfully Register, Login now!');
+                $this->session->set_flashdata('msg', 'Cadastro efetuado com sucesso. Faça seu login!');
                 redirect(base_url().'login');
             }
         }
@@ -70,8 +70,8 @@ class Users extends CI_Controller {
 
         $id = $this->session->userdata('user_id');
 
-        $data['data'] = $this->user->get_user($id);
-        $data['view'] = 'users/show';
+        $data['data'] = $this->usuarios->get_usuario($id);
+        $data['view'] = 'usuarios/show';
 
         $this->load->view('templates/header');
         $this->load->view('layout/main', $data);
@@ -89,8 +89,8 @@ class Users extends CI_Controller {
             $id = $this->session->userdata('user_id');
         } 
         
-        $data['data'] = $this->user->get_user($id);
-        $data['view'] = 'users/edit';
+        $data['data'] = $this->usuarios->get_usuario($id);
+        $data['view'] = 'usuarios/edit';
 
         $this->load->view('templates/header');
         $this->load->view('layout/main', $data);
@@ -101,7 +101,7 @@ class Users extends CI_Controller {
     public function update() {
         if ($this->form_validation->run('update') == FALSE) {
             $this->session->set_flashdata('errors', validation_errors());
-            redirect(base_url().'users/edit');
+            redirect(base_url().'usuarios/edit');
         } else {
             $id = $this->input->post('id');
             $email = $this->input->post('email');
@@ -110,11 +110,11 @@ class Users extends CI_Controller {
                 'email' => $email
             ];
 
-            $insert_data = $this->user->set_user($id, $data);
+            $insert_data = $this->usuarios->set_usuario($id, $data);
 
             if ($insert_data) {
                 $this->session->set_flashdata('msg', 'Successfully Register, Login now!');
-                redirect(base_url().'users/index');
+                redirect(base_url().'usuarios/index');
             }
         }
     }
@@ -122,15 +122,15 @@ class Users extends CI_Controller {
     public function destroy() {        
         if (!$this->input->post('id') || $this->input->post('id') === $this->session->userdata('user_id')) {
             $id = $this->session->userdata('user_id');        
-            $this->user->delete_user($id);
+            $this->usuarios->delete_usuario($id);
 
             $this->session->sess_destroy();
             redirect(base_url());
         } else {
             $id = $this->input->post('id');        
-            $this->user->delete_user($id);
+            $this->usuarios->delete_usuario($id);
 
-            redirect(base_url().'users');
+            redirect(base_url().'usuarios');
         }
     }
 }

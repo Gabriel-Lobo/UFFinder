@@ -11,5 +11,5 @@
 
 	<div id='classes' class='general-container'></div>
 
-	<a class='btn btn-uffinder btn-lg' href="<?=base_url().'rooms/new';?>">Cadastre uma Sala</a>
+	<a class='btn btn-uffinder btn-lg' href="<?=base_url().'salas/new';?>">Cadastre uma Sala</a>
 </div>

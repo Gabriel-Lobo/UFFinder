@@ -8,7 +8,7 @@
     <?php
     endif;
     
-    echo form_open('users/update', 'class="main-form"');
+    echo form_open('usuarios/update', 'class="main-form"');
     ?>
 
     <input id="id" name="id" type="hidden" value="<?php echo $data->id; ?>" required>

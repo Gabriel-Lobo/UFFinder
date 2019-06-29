@@ -8,7 +8,7 @@
     <?php
     endif;
     
-    echo form_open('users/create', 'class="main-form"');
+    echo form_open('usuarios/create', 'class="main-form"');
     ?>
 
     <div class="form-group text-center">
@@ -17,8 +17,8 @@
     </div>
 
     <div class="form-group text-center">
-        <label for="password">Senha</label>
-        <input id="password" name="password" type="password" required>
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" required>
     </div>
 
     <div class="form-group text-center">
