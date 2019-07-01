@@ -6,7 +6,7 @@ function getClasses(url){
 
 		xhttp.onreadystatechange = function() {
 		  if (this.readyState == 4 && this.status == 200) {
-		  	var options = document.getElementById('turmas');
+		  	var options = document.getElementById('turma');
 
 		    var response = JSON.parse(this.responseText);
 
@@ -17,6 +17,7 @@ function getClasses(url){
 		    for (i = 0; i < response.turmas.length; i++) {
 		    	var option = document.createElement('option');
 
+				option.value = response.turmas[i].id;
 		    	option.innerText = response.turmas[i].cod;
 
 		    	options.appendChild(option);

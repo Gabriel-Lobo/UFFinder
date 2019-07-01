@@ -26,19 +26,27 @@ class Salas extends CI_Controller {
     }
 
     public function create() {
-    	$disciplinas = $this->input->post('disciplinas');
-    	$turmas = $this->input->post('turmas');
+    	$sala = $this->input->post('sala');
     	$campus = $this->input->post('campus');
     	$predio = $this->input->post('predio');
-    	$sala = $this->input->post('sala');
-
+    	$turma = $this->input->post('turma');
     	$usuario = $this->session->userdata('user_id');
 
-    	$data = [
-    	    'email' => $email, 'senha' => $password
+    	$data_predio = [
+    	    'nome' => $predio
+    	];
+        $predio = $this->predios->set_predio(0, $data_predio);
+
+    	$data_campus = [
+    	    'nome' => $campus
+    	];
+        $campus = $this->campus->set_campus(0, $data_campus);
+
+    	$data_sala = [
+    	    'idCampus' => $campus, 'idPredio' => $predio, 'idTurma' => $turma, 'idUsuario' => $usuario, 'num' => $sala
     	];
 
-    	$insert_data = $this->usuarios->set_usuario(0, $data);
+    	$insert_data = $this->salas->set_sala(0, $data_sala);
 
     	if ($insert_data) {
     	    $this->session->set_flashdata('msg', 'Cadastro efetuado com sucesso. Faça seu login!');

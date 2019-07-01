@@ -21,8 +21,8 @@
     </div>
 
     <div class="form-group text-center">
-        <label for="turmas">Turma</label>
-        <select class="form-control" id="turmas" name="turmas" required>
+        <label for="turma">Turma</label>
+        <select class="form-control" id="turma" name="turma" required>
         </select>
     </div>
 
