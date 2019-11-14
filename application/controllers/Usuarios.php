@@ -54,11 +54,13 @@ class Usuarios extends CI_Controller {
                 'email' => $email, 'senha' => $password
             ];
 
-            $insert_data = $this->usuarios->set_usuario(0, $data);
+            $user_id = $this->usuarios->set_usuario(0, $data);
 
-            if ($insert_data) {
-                $this->session->set_flashdata('msg', 'Cadastro efetuado com sucesso. Faça seu login!');
-                redirect(base_url().'login');
+            if ($this->db->affected_rows() === 1) {
+                $this->session->set_flashdata('msg', 'Um link de confirmação será enviado para o email fornecido.');
+                $this->usuarios->set_session($user_id, $email);
+
+                redirect(base_url());
             }
         }
     }

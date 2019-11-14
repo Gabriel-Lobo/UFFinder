@@ -4,11 +4,12 @@ class UsuariosModel extends CI_Model {
 
     public function set_usuario($id = 0, $data) {
         if ($id == 0) {
-            return $this->db->insert('usuarios', $data);
+			$this->db->insert('usuarios', $data);
+			return $this->db->insert_id();
         } else {
             $this->db->where('id', $id);
             return $this->db->update('usuarios', $data);
-        }
+		}
     }
 
     public function get_usuario($id = 0) {
@@ -34,5 +35,16 @@ class UsuariosModel extends CI_Model {
 	public function count_usuarios() {
 		$this->db->from('usuarios');
 		return $this->db->count_all_results();
+	}
+
+	public function set_session($user_id, $email, $idAdmin = 0) {
+		$data = array(
+			'logged_in' => true,
+			'is_admin' => $isAdmin,
+			'email' => $email,
+			'user_id' => $user_id
+		);
+
+		$this->session->set_userdata($data);
 	}
 }

@@ -28,13 +28,9 @@ class Login extends CI_Controller {
         $user = $this->login->verify_login($email, $password);
 
         if (count($user) === 1) {
-            $data = array(
-                        'logged_in' => true,
-                        'is_admin' => $user[0]->isAdmin,
-                        'user_id' => $user[0]->id
-                    );
+            $this->load->model('UsuariosModel', 'usuarios');
+            $this->usuarios->set_session($user[0]->id, $email, $user[0]->isAdmin);
 
-            $this->session->set_userdata($data);
             redirect(base_url());
         } else {
             $this->session->set_flashdata('msg', 'Email ou Senha invalidos.');
