@@ -1,13 +1,5 @@
 <div class="inner-container">
     <?php
-    if ($this->session->flashdata()):
-    ?>
-    <div class="alert alert-warning">
-        <?= $this->session->flashdata('errors'); ?>
-    </div>
-    <?php
-    endif;
-    
     echo form_open('usuarios/create', 'class="main-form"');
     ?>
 
@@ -27,7 +19,7 @@
     </div>
 
     <div>
-        <button type="submit" class="btn btn-uffinder btn-lg m-1">Entrar</button>
+        <button type="submit" class="btn btn-uffinder btn-lg m-1">Cadastrar</button>
     </div>
 
     <?php echo form_close();?>

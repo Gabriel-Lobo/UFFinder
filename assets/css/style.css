@@ -238,6 +238,6 @@ table {
 }
 
 .alert {
-  position: absolute;
-  top: 1rem;
+  margin-bottom: 0 !important;
+  text-align: center;
 }

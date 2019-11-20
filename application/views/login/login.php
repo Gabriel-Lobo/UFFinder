@@ -1,15 +1,5 @@
 <div class="inner-container">
-    <?php
-    if ($this->session->flashdata()):
-    ?>
-    <div class="alert alert-warning">
-        <?= $this->session->flashdata('msg'); ?>
-    </div>
-    <?php
-    endif;
-    
-    echo form_open('login/login', 'class="main-form"');
-    ?>
+    <?php echo form_open('login/login', 'class="main-form"');?>
 
     <div class="form-group text-center">
         <label for="email">Email</label>
