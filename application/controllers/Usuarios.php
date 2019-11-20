@@ -2,6 +2,8 @@
 
 class Usuarios extends CI_Controller {
 
+    private $code;
+
     public function __construct() {
         parent::__construct();
 
@@ -50,15 +52,17 @@ class Usuarios extends CI_Controller {
             $email = $this->input->post('email');
             $password = $this->input->post('senha');
 
+            $this->code = date('Y-m-d H:i:s');
+
             $data = [
-                'email' => $email, 'senha' => $password
+                'email' => $email, 'senha' => $password, 'datetime' => $this->code
             ];
 
             $user_id = $this->usuarios->set_usuario(0, $data);
 
             if ($this->db->affected_rows() === 1) {
                 $this->session->set_flashdata('msg', 'Um link de confirmação será enviado para o email fornecido.');
-                $this->usuarios->set_session($user_id, $email);
+                $this->send_email_validation($email);
 
                 redirect(base_url());
             }
@@ -134,5 +138,41 @@ class Usuarios extends CI_Controller {
 
             redirect(base_url().'usuarios');
         }
+    }
+
+    public function validate($email, $code) {
+        $validated = $this->usuarios->validate_email($email, $code);
+
+        if ($validated) {
+            $activated = $this->usuarios->activate_account($email);
+
+            if ($activated) {
+                $this->session->set_flashdata('msg', 'Sua conta foi ativada com sucesso. Faça seu login!');
+                redirect(base_url().'login');
+            } else {
+                $this->session->set_flashdata('msg', 'Esta conta já está ativa');
+                redirect(base_url());
+            }
+        }
+    }
+
+    private function send_email_validation($email) {
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+
+        $code = md5((string)$this->code);
+
+        $this->email->set_mailtype('html');
+        $this->email->from($this->config->item('bot_mail'), 'Uffinder');
+        $this->email->to($email);
+        $this->email->subject('Ative sua conta para acessar o Uffinder');
+
+        $message = '<!DOCTYPE html>
+                    <html><head></head><body>
+                    <p>Para concluir seu cadastro no Uffinder, acesse <a href="'.base_url().'usuarios/validate/'.$email.'/'.$code.'">este link</a><p>
+                    </body></html>';
+
+        $this->email->message($message);
+        $this->email->send();
     }
 }

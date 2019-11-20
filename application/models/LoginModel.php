@@ -5,8 +5,8 @@ class LoginModel extends CI_Model {
     public function verify_login($email, $password) {
         $this->db->where('email', $email);
         $this->db->where('senha', $password);
-        $query = $this->db->get('usuarios');
+        $result = $this->db->get('usuarios')->row();
  
-        return $query->result();
+        return $result;
     }
 }

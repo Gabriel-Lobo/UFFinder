@@ -27,11 +27,16 @@ class Login extends CI_Controller {
 
         $user = $this->login->verify_login($email, $password);
 
-        if (count($user) === 1) {
-            $this->load->model('UsuariosModel', 'usuarios');
-            $this->usuarios->set_session($user[0]->id, $email, $user[0]->isAdmin);
+        if ($user) {
+            if ($user->active) {
+                $this->load->model('UsuariosModel', 'usuarios');
+                $this->usuarios->set_session($user->id, $email, $user->isAdmin);
 
-            redirect(base_url());
+                redirect(base_url());
+            }
+
+            $this->session->set_flashdata('msg', 'O email desta conta ainda não foi confirmado. Por favor, verifique sua caixa de entrada.');
+            redirect(base_url().'login');
         } else {
             $this->session->set_flashdata('msg', 'Email ou Senha invalidos.');
             redirect(base_url().'login');

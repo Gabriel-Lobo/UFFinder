@@ -47,4 +47,30 @@ class UsuariosModel extends CI_Model {
 
 		$this->session->set_userdata($data);
 	}
+
+	public function validate_email($email, $code) {
+		$this->db->where('email', $email);
+
+		$result = $this->db->get('usuarios', 1)->row();
+
+		if (md5((string)$result->datetime) === $code) {
+			return true;
+		}
+	}
+
+	public function activate_account($email) {
+		$this->db->where('email', $email);
+
+		$result = $this->db->get('usuarios', 1)->row();
+
+		if (!$result->active) {
+			$data = array('active' => 1);
+
+			$this->db->where('email', $email);
+
+			return $this->db->update('usuarios', $data);
+		} else {
+			return false;
+		}
+	}
 }
