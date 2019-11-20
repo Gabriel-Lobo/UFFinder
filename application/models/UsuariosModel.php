@@ -37,7 +37,7 @@ class UsuariosModel extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	public function set_session($user_id, $email, $idAdmin = 0) {
+	public function set_session($user_id, $email, $isAdmin = 0) {
 		$data = array(
 			'logged_in' => true,
 			'is_admin' => $isAdmin,
