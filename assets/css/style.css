@@ -241,3 +241,44 @@ table {
   margin-bottom: 0 !important;
   text-align: center;
 }
+
+.accordion {
+  padding: 15px 0;
+}
+
+.accordion .card:last-child {
+  border-bottom: 1px solid #aaa;
+}
+
+.card, .card-header {
+  border-color: #aaa;
+}
+
+.card-header a {
+  display: block;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-header a:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: "\f0de  ";
+  color: #b0c5d8;
+  font-size: 18px;
+  line-height: 22px;
+  padding-right: 15px;
+  transition: .5s;
+}
+
+.card-header a.collapsed:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: "\f0dd  ";
+  transition: .5s;
+}
+
+.card-content div:not(:last-child) {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 1.25rem;
+}

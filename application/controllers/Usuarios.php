@@ -74,9 +74,11 @@ class Usuarios extends CI_Controller {
             redirect(base_url());
         }
 
+        $this->load->model('SalasModel', 'salas');
         $id = $this->session->userdata('user_id');
 
         $data['data'] = $this->usuarios->get_usuario($id);
+        $data['salas'] = $this->salas->get_salas_by_user($id, 10, 20)->result_array();
         $data['view'] = 'usuarios/show';
 
         $this->load->view('templates/header');

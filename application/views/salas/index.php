@@ -1,11 +1,9 @@
-<div class="inner-container">
-  <p><?php echo $data->email; ?></p>
-
+<div class='container bg-white'>  
   <div class="accordion" id="accordionExample">
     <?php
     $disci_cod = '';
 
-    foreach ($salas as $sala):
+    foreach ($data as $sala):
       if ($sala['disci_cod'] != $disci_cod) {
         if ($disci_cod != '') {
           echo '</div></div></div>';
@@ -32,14 +30,11 @@
       $disci_cod = $sala['disci_cod'];
     endforeach;
     
-    if (sizeof($salas) > 0) {
+    if (sizeof($data) > 0) {
       echo '</div></div></div>';
     }
+    
+    echo $pagination;
     ?>
-  </div>
-
-  <div>
-    <a class="btn btn-uffinder " href="<?=base_url().'usuarios/edit';?>">Editar</a>
-    <a class="btn btn-danger " href="<?=base_url().'usuarios/destroy';?>">Apagar</a>
   </div>
 </div>

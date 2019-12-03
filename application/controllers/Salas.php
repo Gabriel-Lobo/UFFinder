@@ -12,8 +12,32 @@ class Salas extends CI_Controller {
         $this->load->model('SalasModel', 'salas');
     }
 
+    public function index() {
+        $text = $this->input->post('search');
+
+        $limit = 10;
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $query = $this->salas->get_salas($text, $limit, $offset);
+
+        $data['data'] = $query->result_array();
+        $data['view'] = 'salas/index';
+
+        $config['base_url'] = site_url('salas/index');
+        $config['total_rows'] = $query->num_rows();
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+
+        $this->load->view('templates/header');
+        $this->load->view('layout/main', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function new() {
         if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('msg', 'Faça seu login para cadastrar uma sala.');
             redirect(base_url().'login');
         }
 

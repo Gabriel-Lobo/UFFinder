@@ -50,6 +50,6 @@
     <script type="text/javascript" src='<?php echo assets_url(); ?>js/script.js'></script>
 
     <script type="text/javascript">
-        getClasses("<?=base_url().'turmas/index';?>");
+        getTurmas("<?=base_url().'turmas/index';?>");
     </script>
 </div>

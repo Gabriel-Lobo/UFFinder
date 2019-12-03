@@ -1,13 +1,13 @@
 <div class='inner-container'>
 	<h2>Encontre sua Sala</h2>
-	<form autocomplete='off' id='search-form' action='results.php' method='post'>
+    <?php echo form_open('salas/index', 'class="main-form" id="search-form"');?>
 		<div class='autocomplete'>
 
-			<input id='search-input' type='text' name='search' placeholder='Digite o nome ou o código da disciplina' minlength='3' maxlength='150'>
-			<input class='btn btn-uffinder search-button' type='button' value='Pesquisar'>
+			<input type='text' name='search' placeholder='Digite o nome ou o código da disciplina' minlength='3' maxlength='150'>
+			<button type="submit" class='btn btn-uffinder search-button'>Pesquisar</button>
 
 		</div>
-	</form>
+    <?php echo form_close();?>
 
 	<div id='classes' class='general-container'></div>
 

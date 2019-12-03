@@ -1,4 +1,4 @@
-function getClasses(url){
+function getTurmas(url){
 	document.getElementById('disciplinas').addEventListener('change', function(){
 		var xhttp = new XMLHttpRequest();
 
