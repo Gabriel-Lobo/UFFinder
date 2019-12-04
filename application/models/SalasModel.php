@@ -21,7 +21,7 @@ class SalasModel extends CI_Model {
             JOIN disciplinas on turmas.idDisc = disciplinas.id
             WHERE disciplinas.cod like "%'.$text.'%" OR disciplinas.nome like "%'.$text.'%"
             GROUP BY turmas.id
-            ORDER BY disciplinas.nome
+            ORDER BY disciplinas.nome, turma_cod
         ');
     }
 
